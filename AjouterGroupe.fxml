@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="pidev.Test.Demande.AjouterGroupeController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="643.0" prefWidth="722.0">
+         <children>
+            <Label layoutX="48.0" layoutY="55.0" text="Nom" />
+            <Label layoutX="48.0" layoutY="80.0" text="Nombre d'enfants" />
+            <Label layoutX="48.0" layoutY="105.0" text="Id Enseignant" />
+            <Label layoutX="48.0" layoutY="129.0" text="Age" />
+            <TextField fx:id="nom" layoutX="162.0" layoutY="52.0" />
+            <TextField fx:id="nbr_enfant" layoutX="162.0" layoutY="76.0" />
+            <TextField fx:id="id_enseignant" layoutX="162.0" layoutY="100.0" />
+            <Button fx:id="AjouterGroupe" layoutX="135.0" layoutY="274.0" mnemonicParsing="false" onMouseClicked="#AjouterGroupe" text="Ajouter" />
+            <TableView fx:id="AffichageTabGroupe" layoutX="26.0" layoutY="387.0" prefHeight="166.0" prefWidth="658.0">
+               <columns>
+                  <TableColumn fx:id="idtab" prefWidth="37.0" text="Id" />
+                  <TableColumn fx:id="nomtab" onEditCommit="#Change_Nom" prefWidth="111.0" text="Nom" />
+                  <TableColumn fx:id="nbr_enfanttab" onEditCommit="#Change_Nbenfant" prefWidth="159.0" text="Nombre d'enfants" />
+                  <TableColumn fx:id="id_enseignanttab" onEditCommit="#Change_IdEns" prefWidth="163.0" text="Id Enseignant" />
+                  <TableColumn fx:id="agetab" minWidth="0.0" onEditCommit="#Change_Age" prefWidth="169.0" text="Age" />
+               </columns>
+            </TableView>
+            <Button fx:id="Supprimer" layoutX="587.0" layoutY="341.0" mnemonicParsing="false" onAction="#ButtonSupprimer" text="Supprimer" />
+            <TextField fx:id="recherche" layoutX="399.0" layoutY="341.0" />
+            <Label layoutX="121.0" layoutY="26.0" text="Ajouter Groupe" />
+            <TextField fx:id="age" layoutX="162.0" layoutY="124.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
