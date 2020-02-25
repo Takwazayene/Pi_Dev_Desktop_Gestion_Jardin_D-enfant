@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package pidev.Test.Demande;
 
 import static com.itextpdf.text.Annotation.FILE;
 import com.itextpdf.text.Document;
@@ -13,8 +13,8 @@ import doryan.windowsnotificationapi.fr.Notification;
 import java.awt.AWTException;
 import java.awt.TrayIcon;
 import java.net.MalformedURLException;
-import utils.ConnexionBD;
-import service.ServiceTab_Reclamation;
+import pidev.DataBase.DataBase;
+import pidev.Service.ServiceTab_Reclamation;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
@@ -46,9 +46,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
 import javafx.util.converter.IntegerStringConverter;
-import entities.Tab_Reclamation;
+import pidev.Entite.Tab_Reclamation;
 import doryan.windowsnotificationapi.fr.Notification;
-import entities.SendMail;
+import functions.SendMail;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -89,6 +89,8 @@ public class AjouterReclamationController implements Initializable {
     @FXML
     private TableView<Tab_Reclamation> AffichageTabDemande;
     @FXML
+    private TableColumn<Tab_Reclamation, Integer> idtab;
+    @FXML
     private TableColumn<Tab_Reclamation, String> nomtab;
     @FXML
     private TableColumn<Tab_Reclamation, String> prenomtab;
@@ -105,16 +107,8 @@ public class AjouterReclamationController implements Initializable {
     private Button Supprimer;
     @FXML
     private TextField recherche;
-    @FXML
-    private TextField mail;
-    @FXML
-    private TextField object;
-    @FXML
-    private TextField corp;
-    @FXML
-    private Button sendmail;
     
-    /*@FXML
+    @FXML
     private void pdf () throws DocumentException, SQLException, FileNotFoundException
     {
         
@@ -125,11 +119,10 @@ public class AjouterReclamationController implements Initializable {
                         pdf.addMetaData(document);
                         pdf.addTitlePage(document, list);
                         document.close();
-    }*/
+    }
     public void Aff(){
                         try {
-         //   con = DataBase.getInstance().getConnection();
-             con = ConnexionBD.getInstance().getCnx();
+            con = DataBase.getInstance().getConnection();
             ste = con.createStatement();
                         data.clear();
 
@@ -216,7 +209,7 @@ public class AjouterReclamationController implements Initializable {
     
     @FXML
     private void AjouterDemande(MouseEvent event) throws SQLException{
-                   con = ConnexionBD.getInstance().getCnx();
+                       con = DataBase.getInstance().getConnection();
              ste = con.createStatement();
 
         
@@ -230,7 +223,7 @@ public class AjouterReclamationController implements Initializable {
 
 String poste = (String) tmpcmb.getValue().toString();
 ServiceTab_Reclamation ser =new ServiceTab_Reclamation();
-ser.ajouter(new Tab_Reclamation(nom.getText(), "0",cin.getText(),numtel.getText(),poste));
+ser.ajouter(new Tab_Reclamation(nom.getText(), prenom.getText(),cin.getText(),numtel.getText(),poste));
 Aff();
 RechercheAV();
 
@@ -276,34 +269,30 @@ RechercheAV();
 
 
 
-    @FXML
  public void Change_Nom(TableColumn.CellEditEvent bb) throws SQLException{
      Tab_Reclamation tab_Reclamationselected = AffichageTabDemande.getSelectionModel().getSelectedItem();
      tab_Reclamationselected.setNom(bb.getNewValue().toString());
      stb.updatetab(tab_Reclamationselected);
  }
  
-    @FXML
   public void Change_Prenom(TableColumn.CellEditEvent bb) throws SQLException{
      Tab_Reclamation tab_Reclamationselected = AffichageTabDemande.getSelectionModel().getSelectedItem();
      tab_Reclamationselected.SetPrenom(bb.getNewValue().toString());
      stb.updatetab(tab_Reclamationselected);
  }
   
-    @FXML
    public void Change_Numtel(TableColumn.CellEditEvent bb) throws SQLException{
      Tab_Reclamation tab_Reclamationselected = AffichageTabDemande.getSelectionModel().getSelectedItem();
      tab_Reclamationselected.setNumtel(bb.getNewValue().toString());
      stb.updatetab(tab_Reclamationselected);
  }
    
-    @FXML
      public void sendmail() {
        
         String mail= (String) nom.getText();
         String Objet= (String) prenom.getText();
         String Corp= (String) cin.getText();
-   SendMail.sendMail(mail,Objet, Corp); 
+//        SendMail.sendMail(mail,Objet, Corp); 
        
     
 }
