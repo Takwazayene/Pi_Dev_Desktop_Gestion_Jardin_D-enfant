@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AccueilAdminController">
+   <children>
+      <AnchorPane layoutX="10.0" layoutY="10.0" style="-fx-background-radius: 20;">
+         <children>
+            <AnchorPane prefHeight="616.0" prefWidth="993.0" style="-fx-background-color: #030307; -fx-background-radius: 15;">
+               <children>
+                  <Pane layoutX="781.0" layoutY="-1.0" prefHeight="93.0" prefWidth="405.0" style="-fx-background-radius: 20 20 0 0;" styleClass="linear-grad">
+                     <children>
+                        <Label layoutX="60.0" layoutY="21.0" text="Oueldy">
+                           <font>
+                              <Font name="Arial Bold" size="22.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <stylesheets>
+                        <URL value="@../../../GestionResto/css/fullpackstyling.css" />
+                        <URL value="@fullpackstyling.css" />
+                     </stylesheets>
+                  </Pane>
+                  <VBox prefHeight="616.0" prefWidth="360.0" style="-fx-background-color: #131022; -fx-background-radius: 15 0 0 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Pane prefHeight="79.0" prefWidth="74.0" style="-fx-background-radius: 15 0 15 15;" />
+                        <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="360.0" styleClass="button3" text="Inscription Enfant" textFill="#a868a0">
+                           <graphic>
+                              <ImageView fitHeight="39.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../inscription.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <stylesheets>
+                              <URL value="@../../../GestionResto/css/fullpackstyling.css" />
+                              <URL value="@fullpackstyling.css" />
+                           </stylesheets>
+                        </Button>
+                        <Button contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="362.0" styleClass="button3" text="Scolarité" textFill="#a868a0">
+                           <graphic>
+                              <ImageView fitHeight="39.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../scolarship.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <stylesheets>
+                              <URL value="@../../../GestionResto/css/fullpackstyling.css" />
+                              <URL value="@fullpackstyling.css" />
+                           </stylesheets>
+                        </Button>
+                        <Button contentDisplay="TOP" layoutX="10.0" layoutY="76.0" mnemonicParsing="false" onAction="#club" prefHeight="66.0" prefWidth="363.0" styleClass="button3" text="Clubs et Evennement" textFill="#a868a0">
+                           <graphic>
+                              <ImageView fitHeight="40.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../time.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <stylesheets>
+                              <URL value="@../../../GestionResto/css/fullpackstyling.css" />
+                              <URL value="@fullpackstyling.css" />
+                           </stylesheets>
+                        </Button>
+                        <Button contentDisplay="TOP" layoutX="10.0" layoutY="142.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="366.0" styleClass="button3" text="Restaurant" textFill="#a868a0">
+                           <graphic>
+                              <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../restau.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <stylesheets>
+                              <URL value="@../../../GestionResto/css/fullpackstyling.css" />
+                              <URL value="@fullpackstyling.css" />
+                           </stylesheets>
+                        </Button>
+                        <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="363.0" styleClass="button3" text="Shopping" textFill="#a868a0">
+                           <graphic>
+                              <ImageView fitHeight="45.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../shopping-cart.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <stylesheets>
+                              <URL value="@../../../GestionResto/css/fullpackstyling.css" />
+                              <URL value="@fullpackstyling.css" />
+                              <URL value="@fullpackstyling.css" />
+                           </stylesheets>
+                        </Button>
+                        <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#reclamation" prefHeight="66.0" prefWidth="368.0" styleClass="button3" text="Reclamations" textFill="#a868a0">
+                           <graphic>
+                              <ImageView fitHeight="56.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../reclamation.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <stylesheets>
+                              <URL value="@../../../GestionResto/css/fullpackstyling.css" />
+                              <URL value="@fullpackstyling.css" />
+                           </stylesheets>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <AnchorPane layoutX="384.0" layoutY="69.0" prefHeight="531.0" prefWidth="759.0" style="-fx-background-color: #131022; -fx-background-radius: 10;" stylesheets="@../../../GestionResto/css/fullpackstyling.css">
+                     <children>
+                        <BorderPane layoutX="569.0" layoutY="404.0" prefHeight="66.0" prefWidth="270.0">
+                           <center>
+                              <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                 <image>
+                                    <Image url="@../images/87541547_856505288155512_1902923992507875328_n.png" />
+                                 </image>
+                              </ImageView>
+                           </center>
+                        </BorderPane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

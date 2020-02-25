@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="784.0" prefWidth="1295.0" style="-fx-background-color: #2F2B43;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.CarteFideliteFXMLController">
+   <children>
+      <AnchorPane prefHeight="519.0" prefWidth="262.0" style="-fx-background-color: #393351;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox layoutY="160.0" prefHeight="356.0" prefWidth="262.0" AnchorPane.bottomAnchor="-48.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="160.0">
+               <children>
+                  <Button fx:id="resto" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#restoclicked" prefHeight="49.0" prefWidth="262.0" styleClass="button1" stylesheets="@../css/fullpackstyling.css" text="Réservation" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/reservation.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding>
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="carte" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="262.0" style="-fx-background-color: #524A7B;" styleClass="button1" stylesheets="@../css/fullpackstyling.css" text="Ma carte fidèlité" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/carte5.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding>
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font>
+                  </Button>
+                  <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#onplatclicked" prefHeight="49.0" prefWidth="262.0" styleClass="button1" stylesheets="@../css/fullpackstyling.css" text="Les Plats" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/plat.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding>
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+            <Pane layoutY="86.0" prefHeight="61.0" prefWidth="262.0" style="-fx-background-color: #FA2C56; -fx-background-radius: 5;">
+               <children>
+                  <Label layoutX="25.0" layoutY="17.0" text="Espace Parent" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+      <Pane layoutX="262.0" prefHeight="649.0" prefWidth="829.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="262.0" AnchorPane.rightAnchor="-4.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Pane layoutX="-25.0" layoutY="-191.0" prefHeight="303.0" prefWidth="467.0" rotate="41.6" style="-fx-background-color: #FA2C56; -fx-background-radius: 70;">
+               <children>
+                  <Label layoutX="153.0" layoutY="273.0" text="Abonné Restaurant" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="17.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="316.0" layoutY="106.0" prefHeight="202.0" prefWidth="179.0" />
+            <Pane layoutX="71.0" layoutY="354.0" prefHeight="202.0" prefWidth="179.0" />
+            <TabPane id="tabPane" layoutX="14.0" layoutY="139.0" prefHeight="632.0" prefWidth="1017.0" style="-fx-background-color: #F4EBD9;" stylesheets="@fullpackstyling.css" tabClosingPolicy="UNAVAILABLE">
+               <tabs>
+                  <Tab text="Carte fidelite">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="498.0" prefWidth="593.0" style="-fx-background-color: #FA2C56;">
+                           <children>
+                              <TableView fx:id="table" layoutX="84.0" layoutY="30.0" prefHeight="278.0" prefWidth="461.0">
+                                 <columns>
+                                    <TableColumn fx:id="CidC" prefWidth="75.0" text="id Carte" />
+                                    <TableColumn fx:id="CnbPoint" prefWidth="94.0" text="nb points" />
+                                    <TableColumn fx:id="Ccredit" prefWidth="92.0" text="credit" />
+                                    <TableColumn fx:id="Cbenefice" prefWidth="90.0" text="benefice" />
+                                    <TableColumn fx:id="Cstatus" prefWidth="104.0" text="status" />
+                                 </columns>
+                              </TableView>
+                              <Button fx:id="transformer" layoutX="436.0" layoutY="318.0" mnemonicParsing="false" onAction="#ontransformerclicked" text="transformer" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="17.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Paiement">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="485.0" prefWidth="818.0" style="-fx-background-color: #FA2C56;">
+                           <children>
+                              <CheckBox fx:id="edinar" layoutX="198.0" layoutY="14.0" mnemonicParsing="false" onAction="#onedinarclicked" text="e-DINAR" textFill="#0bcbf2">
+                                 <font>
+                                    <Font name="Arial Bold" size="14.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox fx:id="cartebancaire" layoutX="55.0" layoutY="14.0" mnemonicParsing="false" onAction="#oncartebancaireclick" text="carte bancaire" textFill="#0bcbf2">
+                                 <font>
+                                    <Font name="Arial Bold" size="14.0" />
+                                 </font>
+                              </CheckBox>
+                              <TextField fx:id="nom" layoutX="92.0" layoutY="55.0" />
+                              <TextField fx:id="prenom" layoutX="93.0" layoutY="107.0" />
+                              <TextField fx:id="email" layoutX="96.0" layoutY="164.0" />
+                              <TextField fx:id="telephone" layoutX="97.0" layoutY="226.0" />
+                              <Label fx:id="nom2" layoutX="18.0" layoutY="60.0" text="Nom" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="prenom2" layoutX="17.0" layoutY="112.0" text="Prenom" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="email2" layoutX="19.0" layoutY="168.0" text="Email" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="telephone2" layoutX="14.0" layoutY="231.0" text="Telephone" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="carte1" layoutX="24.0" layoutY="326.0" prefHeight="21.0" prefWidth="69.0" />
+                              <Label fx:id="montant2" layoutX="18.0" layoutY="386.0" text="Montant" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="adresse" layoutX="96.0" layoutY="285.0" />
+                              <Label fx:id="adresse2" layoutX="19.0" layoutY="292.0" text="Adresse" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="valider" layoutX="98.0" layoutY="433.0" mnemonicParsing="false" onAction="#validerlepaiement" prefHeight="31.0" prefWidth="186.0" text="valider" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="17.0" />
+                                 </font>
+                              </Button>
+                              <TextField fx:id="codeCarte" layoutX="98.0" layoutY="335.0" />
+                              <Label fx:id="codeCarte2" layoutX="18.0" layoutY="340.0" text="Code carte" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="pdf" layoutX="97.0" layoutY="476.0" prefHeight="38.0" prefWidth="190.0" textFill="#0bcbf2f5">
+                                 <font>
+                                    <Font name="Arial Bold" size="25.0" />
+                                 </font></Label>
+                              <TableView fx:id="tableP" layoutX="310.0" layoutY="376.0" prefHeight="167.0" prefWidth="698.0">
+                                 <columns>
+                                    <TableColumn fx:id="Cdate" prefWidth="236.0" text="Date" />
+                                    <TableColumn fx:id="Ctype" prefWidth="209.0" text="Type" />
+                                    <TableColumn fx:id="Cmontant" minWidth="0.0" prefWidth="252.0" text="Montant" />
+                                 </columns>
+                              </TableView>
+                              <Button layoutX="840.0" layoutY="552.0" mnemonicParsing="false" onAction="#trier" prefHeight="31.0" prefWidth="154.0" text="Trier par date" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="17.0" />
+                                 </font>
+                              </Button>
+                              <TableView fx:id="tableReservation" layoutX="306.0" layoutY="69.0" prefHeight="265.0" prefWidth="697.0" style="-fx-background-color: #FA2C56;" stylesheets="@fullpackstyling.css">
+                                 <columns>
+                                    <TableColumn fx:id="Cnom" prefWidth="117.0" text="Nom" />
+                                    <TableColumn fx:id="CtypeA" prefWidth="138.0" text="Type Abonnement" />
+                                    <TableColumn fx:id="CtypeP" prefWidth="140.0" text="Type Pension" />
+                                    <TableColumn fx:id="Cetat" prefWidth="103.0" text="Etat" />
+                                    <TableColumn fx:id="Cabsence" prefWidth="111.0" text="Absence" />
+                                    <TableColumn fx:id="CdateA" prefWidth="144.0" text="Date Abonnement" />
+                                 </columns>
+                              </TableView>
+                              <Label layoutX="315.0" layoutY="350.0" prefHeight="21.0" prefWidth="131.0" text="Mes paiement" textFill="#7c1da1">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="306.0" layoutY="41.0" text="Selectionner la réservation à payer" textFill="#7c1da1">
+                                 <font>
+                                    <Font name="Arial Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox fx:id="montantCal" layoutX="96.0" layoutY="386.0" prefHeight="33.0" prefWidth="188.0" />
+                              <Label fx:id="alert" layoutX="322.0" layoutY="11.0" prefHeight="27.0" prefWidth="371.0" textFill="#ffcc00">
+                                 <font>
+                                    <Font name="Arial Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+               </tabs>
+            </TabPane>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
