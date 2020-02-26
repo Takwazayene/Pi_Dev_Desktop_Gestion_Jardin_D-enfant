@@ -10,7 +10,10 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -19,6 +22,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -29,8 +34,10 @@ import javafx.util.converter.IntegerStringConverter;
 import pidev.DataBase.DataBase;
 import pidev.Entite.Groupe;
 import pidev.Entite.Matiere;
+import pidev.Entite.Tab_Demande;
 import pidev.Service.ServiceGroupe;
 import pidev.Service.ServiceMatiere;
+import pidev.Service.ServiceTab_Demande;
 
 /**
  * FXML Controller class
@@ -59,17 +66,20 @@ public class AjouterMatiereController implements Initializable {
     @FXML
     private TableColumn<Matiere, Integer> nbhtab;
     @FXML
-    private TableColumn<Matiere, Integer> id_enseignanttab;
+    private TableColumn<Matiere, String> id_enseignanttab;
     @FXML
     private Button Supprimer;
     @FXML
     private TextField recherche;
-    @FXML
-    private TextField id_enseignant;
     private final ObservableList<Matiere> data = FXCollections.observableArrayList();
-        ServiceMatiere SM = new ServiceMatiere(); // SG = Service Groupe
+    ServiceMatiere SM = new ServiceMatiere(); // SG = Service Groupe
     @FXML
     private Button AjouterMatiere;
+    @FXML
+    private ComboBox<String> comboens;
+    ObservableList<String> listnom = FXCollections.observableArrayList();
+    @FXML
+    private Label msg;
 
     /**
      * Initializes the controller class.
@@ -80,8 +90,23 @@ public class AjouterMatiereController implements Initializable {
                                         Aff();
 
         RechercheAV();
-
+            try {
+                fillcombo();
+            } catch (SQLException ex) {
+                Logger.getLogger(AjouterGroupeController.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }    
+            public void fillcombo() throws SQLException{
+                ServiceTab_Demande ser = new ServiceTab_Demande();
+        List<Tab_Demande> list = ser.readens();
+        ObservableList<Tab_Demande> cls = FXCollections.observableArrayList();
+        for (Tab_Demande aux : list)
+        {
+          cls.add(new Tab_Demande(aux.getNom()));  
+          listnom.add(aux.getNom());
+        }
+        comboens.setItems(listnom);
+    }
          public void Aff(){
                         try {
             con = DataBase.getInstance().getConnection();
@@ -90,7 +115,7 @@ public class AjouterMatiereController implements Initializable {
 
             ResultSet rs = ste.executeQuery("select * from Matiere");
             while(rs.next()){
-                data.add(new Matiere(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getInt(4),rs.getInt(5)));
+                data.add(new Matiere(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getInt(4),rs.getString(5)));
             }
 
         } catch (Exception e) {
@@ -101,14 +126,14 @@ public class AjouterMatiereController implements Initializable {
             nomtab.setCellValueFactory(new PropertyValueFactory<>("nom"));
             coefftab.setCellValueFactory(new PropertyValueFactory<>("coeff"));
             nbhtab.setCellValueFactory(new PropertyValueFactory<>("nbh"));
-            id_enseignanttab.setCellValueFactory(new PropertyValueFactory<>("id_enseignant"));
+            id_enseignanttab.setCellValueFactory(new PropertyValueFactory<>("enseignant"));
 
             AffichageTabMatiere.setItems(data);
             AffichageTabMatiere.setEditable(true);
             nomtab.setCellFactory(TextFieldTableCell.forTableColumn());
             coefftab.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
             nbhtab.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-            id_enseignanttab.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+            id_enseignanttab.setCellFactory(TextFieldTableCell.forTableColumn());
 
     }
      
@@ -147,21 +172,35 @@ public class AjouterMatiereController implements Initializable {
 		// 5. Add sorted (and filtered) data to the table.
 		AffichageTabMatiere.setItems(sortedData);
     }
-
+    private boolean Validchamp(TextField T){
+        return !T.getText().isEmpty() && T.getLength() > 3;
+    }
+            private boolean Validchampp(TextField T){
+        return !T.getText().isEmpty();
+    }
+    @FXML
     private void AjouterMatiere(MouseEvent event) throws SQLException {
                                        con = DataBase.getInstance().getConnection();
              ste = con.createStatement();
-
+             
+             if(Validchamp(nom)&&Validchampp(coeff)&&Validchampp(nbh)){
                 try {
                 
                     ServiceMatiere ser =new ServiceMatiere();
-                    ser.ajouter(new Matiere(nom.getText(),Integer.valueOf(coeff.getText()),Integer.valueOf(nbh.getText()),Integer.valueOf(id_enseignant.getText())));
+                    ser.ajouter(new Matiere(nom.getText(),Integer.valueOf(coeff.getText()),Integer.valueOf(nbh.getText()),comboens.getValue()));
                     Aff();
                     RechercheAV();
                 }
                  catch (SQLException ex) {
                     System.out.println(ex);
                  }
+                                         msg.setText("Ajout avec succée");
+                                         nom.setText("");
+                                         coeff.setText("");
+                                         nbh.setText("");
+             }else{
+                         msg.setText("Verifier vos données");
+                         }
 
     }
 
@@ -191,7 +230,7 @@ public class AjouterMatiereController implements Initializable {
     @FXML
     private void Change_IdEns(TableColumn.CellEditEvent bb) throws SQLException{
      Matiere tab_Matiereselected = AffichageTabMatiere.getSelectionModel().getSelectedItem();
-     tab_Matiereselected.setId_enseignant(Integer.parseInt(bb.getNewValue().toString()));
+     tab_Matiereselected.setEnseignant(bb.getNewValue().toString());
      SM.updatetab(tab_Matiereselected);
 
     }
@@ -211,21 +250,32 @@ public class AjouterMatiereController implements Initializable {
 
     }
 
+ 
+
+
     @FXML
-    private void AjouterGroupe(MouseEvent event) throws SQLException {
+    private void AjouterMatiere(ActionEvent event) throws SQLException {
                                        con = DataBase.getInstance().getConnection();
              ste = con.createStatement();
+             if(Validchamp(nom)&&Validchampp(coeff)&&Validchampp(nbh)){
 
                 try {
                 
                     ServiceMatiere ser =new ServiceMatiere();
-                    ser.ajouter(new Matiere(nom.getText(),Integer.valueOf(coeff.getText()),Integer.valueOf(nbh.getText()),Integer.valueOf(id_enseignant.getText())));
+                    ser.ajouter(new Matiere(nom.getText(),Integer.valueOf(coeff.getText()),Integer.valueOf(nbh.getText()),comboens.getValue()));
                     Aff();
                     RechercheAV();
                 }
                  catch (SQLException ex) {
                     System.out.println(ex);
                  }
-    }
-    
+                                 
+                                         msg.setText("Ajout avec succée");
+                                         nom.setText("");
+                                         coeff.setText("");
+                                         nbh.setText("");
+             }else{
+                         msg.setText("Verifier vos données");
+                         }
+    }    
 }

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -14,10 +16,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.Test.Demande.AjouterMatiereController">
+<AnchorPane style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.Test.Demande.InterDemandeController">
    <children>
       <AnchorPane prefHeight="616.0" prefWidth="993.0" style="-fx-background-color: #030307; -fx-background-radius: 15;">
          <children>
@@ -78,87 +79,65 @@
             </VBox>
             <AnchorPane layoutX="91.0" layoutY="69.0" prefHeight="531.0" prefWidth="886.0" style="-fx-background-color: #131022; -fx-background-radius: 10;" stylesheets="@../css/fullpackstyling.css">
                <children>
-                  <Label layoutX="25.0" layoutY="176.0" text="Recherche" textFill="WHITE">
-                     <font>
-                        <Font size="26.0" />
-                     </font>
-                  </Label>
-                  <Pane layoutX="547.0" layoutY="46.0" prefHeight="297.0" prefWidth="310.0" style="-fx-background-radius: 20;" styleClass="linear-grad" stylesheets="@../css/fullpackstyling.css">
+                  <Pane layoutX="11.0" layoutY="54.0" prefHeight="447.0" prefWidth="852.0" style="-fx-background-radius: 20;" styleClass="linear-grad" stylesheets="@../css/fullpackstyling.css">
                      <children>
-                        <Label layoutX="3.0" layoutY="88.0" text="Nom" textFill="#f8f8f8">
+                        <Label layoutX="237.0" layoutY="14.0" text="Recherche" textFill="WHITE">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="26.0" />
                            </font>
                         </Label>
-                        <Label layoutX="3.0" layoutY="113.0" text="Coeffition" textFill="#f8f8f8">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="3.0" layoutY="138.0" text="Nombre d'heures" textFill="#f8f8f8">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="3.0" layoutY="162.0" text="Enseignant" textFill="#f8f8f8">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="nom" layoutX="150.0" layoutY="88.0" />
-                        <TextField fx:id="coeff" layoutX="150.0" layoutY="112.0" />
-                        <TextField fx:id="nbh" layoutX="150.0" layoutY="136.0" />
-                        <Label layoutX="76.0" layoutY="59.0" text="Ajouter Matiere" textFill="#f8f8f8">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                        <ComboBox fx:id="comboens" layoutX="150.0" layoutY="161.0" prefWidth="150.0" />
-                        <Button fx:id="AjouterMatiere" layoutX="131.0" layoutY="230.0" mnemonicParsing="false" onAction="#AjouterMatiere" text="Ajouter">
+                        <TableView fx:id="AffichageTabDemande" layoutX="22.0" layoutY="78.0" prefHeight="174.0" prefWidth="808.0">
+                           <columns>
+                              <TableColumn fx:id="idtab" prefWidth="37.0" text="Id" />
+                              <TableColumn fx:id="nomtab" onEditCommit="#Change_Nom" prefWidth="53.0" text="Nom" />
+                              <TableColumn fx:id="prenomtab" onEditCommit="#Change_Prenom" prefWidth="83.0" text="Prenom" />
+                              <TableColumn fx:id="cintab" prefWidth="55.0" text="Cin" />
+                              <TableColumn fx:id="numteltab" onEditCommit="#Change_Numtel" prefWidth="113.0" text="Numero telephone" />
+                              <TableColumn fx:id="datenaisstab" prefWidth="121.0" text="Date de Naissance" />
+                              <TableColumn fx:id="etudetab" prefWidth="73.0" text="Etude(s)" />
+                              <TableColumn fx:id="postetab" prefWidth="89.0" text="Poste" />
+                              <TableColumn fx:id="cvtab" prefWidth="65.0" text="CV" />
+                              <TableColumn fx:id="etattab" prefWidth="89.0" text="Etat" />
+                           </columns>
+                        </TableView>
+                        <TextField fx:id="recherche" layoutX="368.0" layoutY="20.0" />
+                        <Button fx:id="Supprimer" layoutX="715.0" layoutY="15.0" mnemonicParsing="false" onAction="#ButtonSupprimer" text="Supprimer">
                            <textFill>
                               <LinearGradient endX="1.0" endY="1.0">
                                  <stops>
-                                    <Stop color="#5c0ef7" />
+                                    <Stop color="#f50c3a" />
                                     <Stop color="#5c0ef7" offset="1.0" />
                                  </stops>
                               </LinearGradient>
                            </textFill>
                            <font>
-                              <Font name="System Bold Italic" size="15.0" />
+                              <Font name="System Bold Italic" size="16.0" />
                            </font>
                         </Button>
+                        <Button fx:id="approuve" layoutX="597.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#ApprouverDemande" text="Approuvé">
+                           <textFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="#f50c3a" />
+                                    <Stop color="#5c0ef7" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Button>
+                        <BarChart fx:id="barChart" layoutX="326.0" layoutY="266.0" prefHeight="156.0" prefWidth="292.0">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </BarChart>
                      </children>
                   </Pane>
-                  <Line endX="100.0" layoutX="445.0" layoutY="54.0" startX="100.0" startY="418.0" stroke="#b9b1b1" strokeDashOffset="2.0" />
                   <BorderPane layoutX="569.0" layoutY="404.0" prefHeight="66.0" prefWidth="270.0" />
-                  <TextField fx:id="recherche" layoutX="160.0" layoutY="182.0" />
-                  <TableView fx:id="AffichageTabMatiere" layoutX="8.0" layoutY="260.0" prefHeight="166.0" prefWidth="534.0">
-                     <columns>
-                        <TableColumn fx:id="idtab" prefWidth="65.0" text="Id" />
-                        <TableColumn fx:id="nomtab" onEditCommit="#Change_Nom" prefWidth="105.0" text="Nom" />
-                        <TableColumn fx:id="coefftab" onEditCommit="#Change_Coeff" prefWidth="85.0" text="Coeffition" />
-                        <TableColumn fx:id="nbhtab" onEditCommit="#Change_Nbh" prefWidth="159.0" text="Nombre d'heures" />
-                        <TableColumn fx:id="id_enseignanttab" minWidth="0.0" onEditCommit="#Change_IdEns" prefWidth="119.0" text="Enseignant" />
-                     </columns>
-                  </TableView>
-                  <Button fx:id="Supprimer" layoutX="343.0" layoutY="176.0" mnemonicParsing="false" onAction="#ButtonSupprimer" text="Supprimer">
-                     <textFill>
-                        <LinearGradient endX="1.0" endY="1.0">
-                           <stops>
-                              <Stop color="#f50c3a" />
-                              <Stop color="#5c0ef7" offset="1.0" />
-                           </stops>
-                        </LinearGradient>
-                     </textFill>
-                     <font>
-                        <Font name="System Bold Italic" size="16.0" />
-                     </font>
-                  </Button>
-                  <Label fx:id="msg" layoutX="704.0" layoutY="378.0" textFill="WHITE">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
                </children>
             </AnchorPane>
             <ImageView fitHeight="38.0" fitWidth="34.0" layoutX="91.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
@@ -166,7 +145,7 @@
                   <Image url="@../resources/logo.png" />
                </image>
             </ImageView>
-            <Label layoutX="134.0" layoutY="29.0" text="Gestions des Matiere" textFill="WHITE">
+            <Label layoutX="134.0" layoutY="29.0" text="Gestions des Demandes" textFill="WHITE">
                <font>
                   <Font size="13.0" />
                </font>

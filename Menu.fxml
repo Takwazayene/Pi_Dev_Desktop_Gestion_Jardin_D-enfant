@@ -1,126 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.Test.Demande.MenuController">
-   <children>
-      <AnchorPane prefHeight="616.0" prefWidth="993.0" style="-fx-background-color: #030307; -fx-background-radius: 15;">
+<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.Test.Demande.MenuController">
+   <left>
+      <VBox prefHeight="400.0" prefWidth="134.0" style="-fx-background-color: #0D1824;" BorderPane.alignment="CENTER">
          <children>
-            <Pane layoutX="590.0" layoutY="-1.0" prefHeight="93.0" prefWidth="405.0" style="-fx-background-radius: 20 20 0 0;" styleClass="linear-grad" stylesheets="@../css/fullpackstyling.css">
-               <children>
-                  <Label layoutX="167.0" layoutY="21.0" text="SALHI ICHRAK" textFill="WHITE">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="38.0" fitWidth="34.0" layoutX="316.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/87640155_2975302779225610_2974117852929327104_n.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
-            <VBox prefHeight="544.0" prefWidth="74.0" style="-fx-background-color: #131022; -fx-background-radius: 15 0 0 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <Pane prefHeight="79.0" prefWidth="74.0" style="-fx-background-radius: 15 0 15 15;" />
-                  <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="74.0" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Acceuil" textFill="#a868a0">
-                     <graphic>
-                        <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/85180574_641987536385873_252096120505761792_n.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
-            </VBox>
-            <AnchorPane layoutX="91.0" layoutY="69.0" prefHeight="531.0" prefWidth="886.0" style="-fx-background-color: #131022; -fx-background-radius: 10;" stylesheets="@../css/fullpackstyling.css">
-               <children>
-                  <Label layoutX="39.0" layoutY="34.0" text="TRAITEMENT" textFill="WHITE">
-                     <font>
-                        <Font size="26.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="195.0" layoutY="34.0" text="RECLAMATION" textFill="#a868a0">
-                     <font>
-                        <Font size="26.0" />
-                     </font>
-                  </Label>
-                  <Line endX="100.0" layoutX="445.0" layoutY="54.0" startX="100.0" startY="418.0" stroke="#b9b1b1" strokeDashOffset="2.0" />
-                  <Label layoutX="569.0" layoutY="67.0" text="Les statistiques" textFill="WHITE">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="693.0" layoutY="67.0" text="parents/enseignats" textFill="#a868a0">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <BorderPane layoutX="569.0" layoutY="404.0" prefHeight="66.0" prefWidth="270.0">
-                     <center>
-                        <Button fx:id="calculerSom" mnemonicParsing="false" prefHeight="25.0" prefWidth="146.0" styleClass="linear-grad" text="calculer" textFill="WHITE" BorderPane.alignment="CENTER">
-                           <font>
-                              <Font name="Arial Bold" size="13.0" />
-                           </font></Button>
-                     </center></BorderPane>
-                  <Button fx:id="Approuv" layoutX="342.0" layoutY="120.0" mnemonicParsing="false" onAction="#Approuv" prefHeight="25.0" prefWidth="150.0" styleClass="linear-grad" text="Traiter" textFill="WHITE" textOverrun="LEADING_WORD_ELLIPSIS">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                  </Button>
-                  <TableView fx:id="AffichageTabDemande" layoutX="27.0" layoutY="164.0" prefHeight="260.0" prefWidth="465.0">
-                    <columns>
-                      <TableColumn fx:id="nomtab" prefWidth="123.0" style="-fx-background-color: #fff600;" styleClass="..\css\fullpackstyling.css" text="Nom du reclameur" />
-                        <TableColumn fx:id="prenomtab" prefWidth="54.0" style="-fx-background-color: #fff600;" text="etat" />
-                        <TableColumn fx:id="cintab" prefWidth="76.0" style="-fx-background-color: #fff600;" text="Cin" />
-                        <TableColumn fx:id="numteltab" prefWidth="134.0" style="-fx-background-color: #fff600;" text="description" />
-                        <TableColumn fx:id="postetab" prefWidth="77.0" style="-fx-background-color: #fff600;" text="poste" />
-                    </columns>
-                  </TableView>
-                  <PieChart fx:id="bookChart" layoutX="504.0" layoutY="20.0" prefHeight="407.0" prefWidth="387.0" />
-                  <Label layoutX="555.0" layoutY="372.0" text="somme " textFill="WHITE">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="621.0" layoutY="371.0" text="des reclamations" textFill="#a868a0">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="Excel" layoutX="340.0" layoutY="445.0" mnemonicParsing="false" onAction="#Excel" prefHeight="25.0" prefWidth="150.0" styleClass="linear-grad" text="Excel" textFill="WHITE" textOverrun="LEADING_WORD_ELLIPSIS">
-                     <font>
-                        <Font name="Arial Bold" size="13.0" />
-                     </font>
-                  </Button>
-                  <TextField fx:id="resultat" layoutX="682.0" layoutY="460.0" prefHeight="25.0" prefWidth="45.0" />
-               </children>
-            </AnchorPane>
-            <ImageView fitHeight="38.0" fitWidth="34.0" layoutX="91.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../resources/logo.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="134.0" layoutY="29.0" text="RECLAMATION" textFill="WHITE">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </Label>
+            <Button fx:id="interdemande" mnemonicParsing="false" onMouseClicked="#InterDemande" prefHeight="94.0" prefWidth="134.0" text="Demande" />
+            <Button fx:id="affdem" mnemonicParsing="false" onMouseClicked="#interaffdem" prefHeight="97.0" prefWidth="202.0" text="Afficher Demande" />
+            <Button fx:id="intergroupe" mnemonicParsing="false" onMouseClicked="#InterGroupe" prefHeight="97.0" prefWidth="134.0" text="Groupe" />
+            <Button fx:id="intermatiere" mnemonicParsing="false" onMouseClicked="#InterMatiere" prefHeight="91.0" prefWidth="134.0" text="Matiere" />
          </children>
-      </AnchorPane>
-   </children>
-</AnchorPane>
+      </VBox>
+   </left>
+   <center>
+      <AnchorPane fx:id="AP" style="-fx-background-color: #14242B;" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>
