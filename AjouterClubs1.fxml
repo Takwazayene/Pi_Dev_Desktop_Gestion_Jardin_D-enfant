@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="yerabbyyyy.AjouterClubsController">
+   <children>
+      <AnchorPane layoutX="10.0" layoutY="10.0" style="-fx-background-radius: 20;">
+         <children>
+            <AnchorPane prefHeight="616.0" prefWidth="993.0" style="-fx-background-color: #030307; -fx-background-radius: 15;">
+               <children>
+                  <Pane layoutX="534.0" layoutY="-1.0" prefHeight="93.0" prefWidth="405.0" style="-fx-background-radius: 20 20 0 0;" styleClass="linear-grad">
+                     <children>
+                        <ImageView fitHeight="38.0" fitWidth="34.0" layoutX="335.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/woman-with-tie.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="167.0" layoutY="21.0" text="OUELDY">
+                           <font>
+                              <Font name="Arial Bold" size="22.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <stylesheets>
+                        <URL value="@../css/fullpackstyling.css" />
+                        <URL value="@../fullpackstyling.css" />
+                     </stylesheets>
+                  </Pane>
+                  <VBox prefHeight="544.0" prefWidth="74.0" style="-fx-background-color: #131022; -fx-background-radius: 15 0 0 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Pane prefHeight="79.0" prefWidth="74.0" style="-fx-background-radius: 15 0 15 15;" />
+                        <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="74.0" styleClass="button3" stylesheets="@../fullpackstyling.css" text="Accueil" textFill="#a868a0">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/home-run%20(2).png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <AnchorPane layoutX="91.0" layoutY="69.0" prefHeight="531.0" prefWidth="886.0" style="-fx-background-color: #131022; -fx-background-radius: 10;" stylesheets="@../css/fullpackstyling.css">
+                     <children>
+                        <BorderPane layoutX="569.0" layoutY="404.0" prefHeight="66.0" prefWidth="270.0" />
+                        <ComboBox fx:id="RCombobox" layoutX="240.0" layoutY="306.0" prefHeight="31.0" prefWidth="187.0" />
+                        <Button fx:id="idajouter" layoutX="240.0" layoutY="404.0" mnemonicParsing="false" onAction="#AjouterClubAction" prefHeight="38.0" prefWidth="187.0" style="-fx-background-radius: 10;" styleClass="linear-grad" text="Ajouter" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="15.0" />
+                           </font>
+                           <stylesheets>
+                              <URL value="@../css/fullpackstyling.css" />
+                              <URL value="@../fullpackstyling.css" />
+                           </stylesheets>
+                        </Button>
+                        <Button fx:id="idretour" layoutX="14.0" layoutY="477.0" mnemonicParsing="false" onAction="#RetourAction" prefHeight="25.0" prefWidth="145.0" style="-fx-background-radius: 10;" styleClass="linear-grad" text="Retour" textFill="WHITE">
+                           <stylesheets>
+                              <URL value="@../css/fullpackstyling.css" />
+                              <URL value="@../fullpackstyling.css" />
+                           </stylesheets>
+                           <font>
+                              <Font name="Arial Bold" size="16.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="idnom" layoutX="240.0" layoutY="251.0" />
+                        <TextField fx:id="ideff" layoutX="239.0" layoutY="357.0" />
+                        <Label layoutX="240.0" layoutY="158.0" text="Ajouter un club" textAlignment="CENTER" textFill="#a868a0">
+                           <font>
+                              <Font size="31.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <ImageView fitHeight="38.0" fitWidth="34.0" layoutX="91.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/logo.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="134.0" layoutY="29.0" text="Dev-it" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="224.0" layoutY="322.0" text="Nom club" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="221.0" layoutY="379.0" text="Activite club" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="223.0" layoutY="426.0" text="Effectif" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="yerabbyyyy.FXMLaffichereventController">
+   <children>
+      <AnchorPane layoutX="10.0" layoutY="10.0" style="-fx-background-radius: 20;">
+         <children>
+            <AnchorPane prefHeight="616.0" prefWidth="993.0" style="-fx-background-color: #030307; -fx-background-radius: 15;">
+               <children>
+                  <Pane layoutX="542.0" layoutY="-1.0" prefHeight="93.0" prefWidth="405.0" style="-fx-background-radius: 20 20 0 0;" styleClass="linear-grad" stylesheets="@../fullpackstyling.css">
+                     <children>
+                        <ImageView fitHeight="38.0" fitWidth="34.0" layoutX="335.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../resources/woman-with-tie.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="167.0" layoutY="21.0" text="OUELDY">
+                           <font>
+                              <Font name="Arial Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <VBox prefHeight="544.0" prefWidth="74.0" style="-fx-background-color: #131022; -fx-background-radius: 15 0 0 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Pane prefHeight="79.0" prefWidth="74.0" style="-fx-background-radius: 15 0 15 15;" />
+                        <Button contentDisplay="TOP" layoutX="10.0" layoutY="142.0" mnemonicParsing="false" onAction="#accueil" prefHeight="66.0" prefWidth="74.0" styleClass="button3" text="Accueil" textFill="#a868a0">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../resources/home-run%20(2).png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <stylesheets>
+                              <URL value="@../css/fullpackstyling.css" />
+                              <URL value="@../fullpackstyling.css" />
+                           </stylesheets>
+                        </Button>
+                     </children>
+                  </VBox>
+                  <AnchorPane layoutX="91.0" layoutY="69.0" prefHeight="531.0" prefWidth="886.0" style="-fx-background-color: #131022; -fx-background-radius: 10;" stylesheets="@../css/fullpackstyling.css">
+                     <children>
+                        <BorderPane layoutX="569.0" layoutY="404.0" prefHeight="66.0" prefWidth="270.0" />
+                        <Label layoutX="258.0" layoutY="55.0" text="Afficher un evenement" textFill="#a868a0">
+                           <font>
+                              <Font size="31.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="idretour" layoutX="22.0" layoutY="470.0" mnemonicParsing="false" onAction="#RetourAction" prefHeight="25.0" prefWidth="145.0" style="-fx-background-radius: 10;" styleClass="linear-grad" text="Retour" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="16.0" />
+                           </font>
+                           <stylesheets>
+                              <URL value="@../css/fullpackstyling.css" />
+                              <URL value="@../fullpackstyling.css" />
+                           </stylesheets>
+                        </Button>
+                        <TableView fx:id="idtable" layoutX="130.0" layoutY="147.0" prefHeight="203.0" prefWidth="650.0" style="-fx-background-color: #a868a0;">
+                           <columns>
+                              <TableColumn fx:id="idnom" onEditCommit="#Change_nom" prefWidth="75.0" text="Nom evenement" />
+                              <TableColumn fx:id="idcat" prefWidth="75.0" text="Categorie evenement" />
+                              <TableColumn fx:id="idnbr" prefWidth="75.0" text="NbrPlaceDispo" />
+                              <TableColumn fx:id="idate" prefWidth="101.0" text="Date evenement" />
+                              <TableColumn fx:id="idaf" prefWidth="114.0" text="description" />
+                           </columns>
+                        </TableView>
+                        <Button fx:id="supprimerid" layoutX="662.0" layoutY="46.0" mnemonicParsing="false" onAction="#SupprimerAction" prefHeight="25.0" prefWidth="145.0" style="-fx-background-radius: 10;" styleClass="linear-grad" text="Supprimer" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="16.0" />
+                           </font>
+                           <stylesheets>
+                              <URL value="@../css/fullpackstyling.css" />
+                              <URL value="@../fullpackstyling.css" />
+                           </stylesheets>
+                        </Button>
+                        <TextField fx:id="recherche" layoutX="381.0" layoutY="412.0" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
