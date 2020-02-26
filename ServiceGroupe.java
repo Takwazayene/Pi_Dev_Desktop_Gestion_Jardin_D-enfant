@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pidev.Service;
+package services;
 
 import java.sql.SQLException;
 import java.util.List;
-import pidev.Entite.Groupe;
-import pidev.IService.IService;
-import pidev.DataBase.DataBase;
+import entities.Groupe;
+import Utils.ConnexionBD;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -19,7 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class ServiceGroupe implements IService<Groupe> {
+public class ServiceGroupe  {
 
     private Connection con;
     private Statement ste;
@@ -27,11 +26,11 @@ public class ServiceGroupe implements IService<Groupe> {
     private ResultSet res ;
 
     public ServiceGroupe() {
-        con = DataBase.getInstance().getConnection();
+         con= ConnexionBD.getInstance().getCnx();
     }
     
     
-    @Override
+    
     public void ajouter(Groupe a) throws SQLException {
         PreparedStatement PS = con.prepareStatement("INSERT INTO `Jardin`.`Groupe` (`Nom_Groupe`, `Nbr_Enfant_Groupe`, `Id_Enseignant_Groupe`, `Age_Groupe`) VALUES (?, ?, ?, ?);");
         PS.setString(1, a.getNom());
@@ -41,14 +40,14 @@ public class ServiceGroupe implements IService<Groupe> {
         PS.executeUpdate();
     }
 
-    @Override
+  
     public void delete(int id) throws SQLException {
         PreparedStatement PS = con.prepareStatement("DELETE FROM `Jardin`.`Groupe` WHERE `Id_Groupe`=?");
         PS.setInt(1,id);
         PS.executeUpdate();
     }
 
-    @Override
+ 
     public void update(Groupe a,int id) throws SQLException {
         PreparedStatement PS=con.prepareStatement("UPDATE `Jardin`.`Groupe` SET `Nom_Groupe`=?,`Nbr_Enfant_Groupe`=? ,`Id_Enseignant_Groupe`=?,`Age_Groupe`=? WHERE `Id_Groupe`=?");
         PS.setString(1,a.getNom());
@@ -59,17 +58,7 @@ public class ServiceGroupe implements IService<Groupe> {
         PS.executeUpdate();
     }
 
-        public void updatetab(Groupe a) throws SQLException {
-        PreparedStatement PS=con.prepareStatement("UPDATE `Jardin`.`Groupe` SET `Nom_Groupe`=?,`Nbr_Enfant_Groupe`=? ,`Id_Enseignant_Groupe`=?,`Age_Groupe`=? WHERE `Id_Groupe`=?");
-        PS.setString(1,a.getNom());
-        PS.setInt(2, a.getNbr_enfant());
-        PS.setInt(3,a.getId_enseignant());
-        PS.setInt(4,a.getAge());
-        PS.setInt(5,a.getId());
-        PS.executeUpdate();
-    }
-
-    @Override
+   
     public List<Groupe> readAll() throws SQLException {
         List<Groupe> AL = new ArrayList<>();
         ste = con.createStatement();

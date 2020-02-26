@@ -23,7 +23,7 @@
          <children>
             <VBox layoutY="160.0" prefHeight="356.0" prefWidth="262.0" AnchorPane.bottomAnchor="-48.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="160.0">
                <children>
-                  <Button fx:id="resto" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#restoclicked" prefHeight="49.0" prefWidth="262.0" styleClass="button1" stylesheets="@../css/fullpackstyling.css" text="Réservation" textFill="WHITE">
+                  <Button fx:id="resto" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#onrestoclicked" prefHeight="49.0" prefWidth="262.0" styleClass="button1" stylesheets="@../css/fullpackstyling.css" text="Réservation" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -41,7 +41,7 @@
                         <Font name="Arial Bold" size="16.0" />
                      </font>
                   </Button>
-                  <Button fx:id="carte" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="262.0" style="-fx-background-color: #524A7B;" styleClass="button1" stylesheets="@../css/fullpackstyling.css" text="Ma carte fidèlité" textFill="WHITE">
+                  <Button fx:id="carte" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#oncarteclicked" prefHeight="49.0" prefWidth="262.0" styleClass="button1" stylesheets="@../css/fullpackstyling.css" text="Ma carte fidèlité" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -56,7 +56,7 @@
                         <Font name="Arial Bold" size="16.0" />
                      </font>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#onplatclicked" prefHeight="49.0" prefWidth="262.0" styleClass="button1" stylesheets="@../css/fullpackstyling.css" text="Les Plats" textFill="WHITE">
+                  <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="262.0" styleClass="button1" stylesheets="@../css/fullpackstyling.css" text="Les Plats" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -160,6 +160,7 @@
                                  </font>
                               </Label>
                               <Label fx:id="carte1" layoutX="24.0" layoutY="326.0" prefHeight="21.0" prefWidth="69.0" />
+                              <TextField fx:id="montant" layoutX="96.0" layoutY="379.0" />
                               <Label fx:id="montant2" layoutX="18.0" layoutY="386.0" text="Montant" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Bold" size="14.0" />
@@ -182,10 +183,7 @@
                                     <Font name="Arial Bold" size="14.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="pdf" layoutX="97.0" layoutY="476.0" prefHeight="38.0" prefWidth="190.0" textFill="#0bcbf2f5">
-                                 <font>
-                                    <Font name="Arial Bold" size="25.0" />
-                                 </font></Label>
+                              <Label fx:id="pdf" layoutX="97.0" layoutY="515.0" prefHeight="38.0" prefWidth="190.0" textFill="#146fb5f5" />
                               <TableView fx:id="tableP" layoutX="310.0" layoutY="376.0" prefHeight="167.0" prefWidth="698.0">
                                  <columns>
                                     <TableColumn fx:id="Cdate" prefWidth="236.0" text="Date" />
@@ -193,7 +191,7 @@
                                     <TableColumn fx:id="Cmontant" minWidth="0.0" prefWidth="252.0" text="Montant" />
                                  </columns>
                               </TableView>
-                              <Button layoutX="840.0" layoutY="552.0" mnemonicParsing="false" onAction="#trier" prefHeight="31.0" prefWidth="154.0" text="Trier par date" textFill="WHITE">
+                              <Button layoutX="675.0" layoutY="554.0" mnemonicParsing="false" onAction="#trier" prefHeight="31.0" prefWidth="154.0" text="Trier par date" textFill="WHITE">
                                  <font>
                                     <Font name="Arial Bold" size="17.0" />
                                  </font>
@@ -218,8 +216,8 @@
                                     <Font name="Arial Bold" size="16.0" />
                                  </font>
                               </Label>
-                              <ComboBox fx:id="montantCal" layoutX="96.0" layoutY="386.0" prefHeight="33.0" prefWidth="188.0" />
-                              <Label fx:id="alert" layoutX="322.0" layoutY="11.0" prefHeight="27.0" prefWidth="371.0" textFill="#ffcc00">
+                              <ComboBox fx:id="montantCal" layoutX="57.0" layoutY="484.0" prefWidth="150.0" />
+                              <Label fx:id="alert" layoutX="322.0" layoutY="11.0" prefHeight="27.0" prefWidth="371.0" textFill="#eb1212">
                                  <font>
                                     <Font name="Arial Bold" size="14.0" />
                                  </font>

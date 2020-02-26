@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="1087.0" style="-fx-background-color: #2F2B43;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.InscriptionController">
+   <children>
+      <Button layoutX="331.0" layoutY="85.0" mnemonicParsing="false" opacity="0.7" prefHeight="557.0" prefWidth="744.0" style="-fx-background-color: #FA2C56;" stylesheets="@../css/fullpackstyling.css" textFill="#fa2c56" />
+      <Pane layoutX="24.0" layoutY="22.0" prefHeight="61.0" prefWidth="262.0" style="-fx-background-color: #FA2C56; -fx-background-radius: 5;">
+         <children>
+            <Label layoutX="60.0" layoutY="17.0" text="Inscription" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <TextField fx:id="numF" layoutX="397.0" layoutY="321.0" prefHeight="25.0" prefWidth="219.0" style="-fx-border-color: #FA2C56;" />
+      <TextField fx:id="prenomf" layoutX="397.0" layoutY="245.0" prefHeight="25.0" prefWidth="219.0" style="-fx-border-color: #FA2C56;" />
+      <TextField fx:id="adresF" layoutX="397.0" layoutY="403.0" prefHeight="25.0" prefWidth="219.0" style="-fx-border-color: #FA2C56;" />
+      <TextField fx:id="nomF" layoutX="397.0" layoutY="170.0" prefHeight="25.0" prefWidth="219.0" style="-fx-border-color: #FA2C56;" />
+      <TextField fx:id="cin" layoutX="395.0" layoutY="560.0" prefHeight="25.0" prefWidth="219.0" style="-fx-border-color: #FA2C56;" />
+      <TextField fx:id="mailF" layoutX="397.0" layoutY="484.0" prefHeight="25.0" prefWidth="219.0" style="-fx-border-color: #FA2C56;" />
+      <Label layoutX="397.0" layoutY="107.0" text="Information Parent">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="nom" layoutX="764.0" layoutY="142.0" text="Nom">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="prenom" layoutX="765.0" layoutY="218.0" text="Prenom">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="adress" layoutX="144.0" layoutY="401.0" prefHeight="17.0" prefWidth="49.0" text="Adresse" />
+      <Label fx:id="nomE" layoutX="398.0" layoutY="142.0" text="Nom">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="prenomE" layoutX="398.0" layoutY="218.0" text="Prenom">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="789.0" layoutY="107.0" text="Information Enfant">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="mail" layoutX="145.0" layoutY="474.0" prefHeight="17.0" prefWidth="49.0" text="Email" />
+      <Label fx:id="num1" layoutX="399.0" layoutY="293.0" text="Numéro du Téléphone">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="mail1" layoutX="395.0" layoutY="458.0" prefHeight="17.0" prefWidth="49.0" text="Email">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="adress1" layoutX="395.0" layoutY="378.0" prefHeight="20.0" prefWidth="65.0" text="Address">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="Cin" layoutX="395.0" layoutY="531.0" prefHeight="17.0" prefWidth="49.0" text="CIN">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="ageEF" layoutX="764.0" layoutY="321.0" prefHeight="25.0" prefWidth="219.0" style="-fx-border-color: #FA2C56;" />
+      <TextField fx:id="prenomEF" layoutX="764.0" layoutY="243.0" prefHeight="25.0" prefWidth="219.0" style="-fx-border-color: #FA2C56;" />
+      <TextField fx:id="nomEF" layoutX="764.0" layoutY="167.0" prefHeight="25.0" prefWidth="219.0" style="-fx-border-color: #FA2C56;" />
+      <Label fx:id="prenom1" layoutX="765.0" layoutY="293.0" text="Age">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="incri" layoutX="874.0" layoutY="567.0" mnemonicParsing="false" onAction="#handleInscriButtonAction" prefHeight="41.0" prefWidth="107.0" styleClass="button2" stylesheets="@../css/fullpackstyling.css" text="S'inscrire" textFill="#fa2c56">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

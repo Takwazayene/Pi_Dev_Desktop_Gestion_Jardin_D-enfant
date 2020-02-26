@@ -1,4 +1,4 @@
-package pidev.Entite;
+package entities;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -14,24 +14,24 @@ public class Groupe {
     private int id;
     private String nom;
     private int nbr_enfant;
-    private String enseignant;
+    private int id_enseignant;
     private int age;
     
     public Groupe(){
         
     }
-    public Groupe(int id ,String nom ,int nbr_enfant,String enseignant,int age){
+    public Groupe(int id ,String nom ,int nbr_enfant,int id_enseignant,int age){
         this.id= id;
         this.nom=nom;
         this.nbr_enfant=nbr_enfant;
-        this.enseignant=enseignant;
+        this.id_enseignant=id_enseignant;
         this.age=age;
     }
     
-    public Groupe(String nom ,int nbr_enfant,String enseignant,int age){
+    public Groupe(String nom ,int nbr_enfant,int id_enseignant,int age){
         this.nom=nom;
         this.nbr_enfant=nbr_enfant;
-        this.enseignant=enseignant;
+        this.id_enseignant=id_enseignant;
         this.age=age;
     }
     
@@ -56,15 +56,14 @@ public class Groupe {
     public void SetNbr_enfant(int nbr_enfant){
         this.nbr_enfant=nbr_enfant;
     }
-
-    public void setEnseignant(String enseignant) {
-        this.enseignant = enseignant;
+    
+    public int getId_enseignant() {
+        return id_enseignant;
     }
-
-    public String getEnseignant() {
-        return enseignant;
+    public void setId_enseignant(int id_enseignant) {
+        this.id_enseignant = id_enseignant;
     }
-
+    
     public int getAge() {
         return age;
     }
@@ -73,7 +72,7 @@ public class Groupe {
     }
     
     public  String toString(){
-        return "Groupe : Id : " +id+ " Nom :" +nom+ " Nombre d'enfants :"+nbr_enfant+" Id Enseignant :"+enseignant+" Age : "+age;
+        return "Groupe : Id :" +id+ " Nom :" +nom+ "Nombre d'enfants :"+nbr_enfant+" Id Enseignant :"+id_enseignant+" Age : "+age;
     }
     
 

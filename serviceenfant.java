@@ -1,10 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package service;
 
+package services;
 import entities.Enfant;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,14 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import utils.ConnexionBD;
+import Utils.ConnexionBD;
 
-/**
- *
- * @author ASUS
- */
 public class serviceenfant {
-    
     Connection c= ConnexionBD.getInstance().getCnx();
     
     /*public void ajouter(Enfant c1) throws SQLException {
@@ -40,7 +30,7 @@ public class serviceenfant {
     {
         try {
             Statement st =c.createStatement();
-            String req="insert into enfant values('" +e.getId()+ "', '" + e.getIdParent() + "', '" + e.getNomE() + "', '" + e.getPrenomE() + "', '" +e.getAge() + "', '" + e.getIdGroupe()+"');";
+            String req = "INSERT INTO enfant (`idE`, `idP`, `nom`, `prenom`, `age`, `idG`) VALUES (NULL, '" + e.getIdParent() + "', '" + e.getNomE() + "', '" + e.getPrenomE() + "', '" + e.getAge() + "', '" + e.getIdGroupe() + "');";
             st.executeUpdate(req);
         } catch (SQLException ex) {
             Logger.getLogger(serviceenfant.class.getName()).log(Level.SEVERE, null, ex);
@@ -63,7 +53,7 @@ public class serviceenfant {
                 
     }
  
-   /*public void modifierPreom(Enfant cl, String prenom)
+   public void modifierPreom(Enfant cl, String prenom)
     {
         try {
             PreparedStatement pt = c.prepareStatement("update enfant set prenom=? where idE=?");
@@ -76,8 +66,30 @@ public class serviceenfant {
                 
     }
     
-    
-    */
+    public void modifirAge(Enfant cl, int age)
+    {
+        try {
+            PreparedStatement pt = c.prepareStatement("update enfant set age=? where idE=?");
+            pt.setInt(1,age);
+            pt.setInt(2,cl.getId());
+            pt.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(serviceenfant.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                
+    }
+    public void modifierGroupe(Enfant cl, int idG)
+    {
+        try {
+            PreparedStatement pt = c.prepareStatement("update enfant set idG=? where idE=?");
+            pt.setInt(1,idG);
+            pt.setInt(2,cl.getId());
+            pt.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(serviceenfant.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                
+    }
     
     public void afficherEnfant()
     {
@@ -92,11 +104,12 @@ public class serviceenfant {
         }
     }
     
-    public void supprimerEnfant (Enfant cl)
+    
+    
+    public void supprimerEnfant (Enfant cl,int id)
     {
         try {
-            PreparedStatement pt = c.prepareStatement("delete from enfant where idE=?");
-            pt.setInt(1,cl.getId());
+            PreparedStatement pt = c.prepareStatement("delete from enfant where idE='"+id+"'");
             pt.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(serviceenfant.class.getName()).log(Level.SEVERE, null, ex);
@@ -149,6 +162,23 @@ public class serviceenfant {
         return a ;
         
     }
-    
-    
+    public List<Enfant> readAll() throws SQLException {
+            List<Enfant> arr = new ArrayList<>();
+    Statement ste=c.createStatement();
+    ResultSet rs=ste.executeQuery("select * from enfant");
+     while (rs.next()) {                
+               int id=rs.getInt(1);
+               int idP=rs.getInt(2);
+               String nomE=rs.getString(3);
+               String prenomE=rs.getString(3);
+               int age=rs.getInt(5);
+               int GR=rs.getInt(6);
+
+               
+               Enfant D=new Enfant(id,idP, nomE, prenomE,age,GR);
+     arr.add(D);
+     }
+    return arr;
+    }
+
 }

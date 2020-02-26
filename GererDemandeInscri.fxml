@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="741.0" prefWidth="1373.0" style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.GererDemandeInscriController">
+   <children>
+      <AnchorPane layoutY="12.0" prefHeight="746.0" prefWidth="1369.0" style="-fx-background-color: #030307; -fx-background-radius: 15;">
+         <children>
+            <Pane layoutX="947.0" layoutY="-1.0" prefHeight="93.0" prefWidth="405.0" style="-fx-background-radius: 20 20 0 0;" styleClass="linear-grad" stylesheets="@../css/fullpackstyling.css">
+               <children>
+                  <ImageView fitHeight="38.0" fitWidth="34.0" layoutX="335.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/ic_usr.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="167.0" layoutY="21.0" text="EARN MONEY" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <VBox prefHeight="544.0" prefWidth="74.0" style="-fx-background-color: #131022; -fx-background-radius: 15 0 0 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Pane prefHeight="79.0" prefWidth="74.0" style="-fx-background-radius: 15 0 15 15;" />
+                  <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="66.0" prefWidth="74.0" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Profile" textFill="#a868a0">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/cat.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="74.0" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Activity" textFill="#a868a0">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/time.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button contentDisplay="TOP" layoutX="10.0" layoutY="76.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="74.0" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Goals" textFill="#a868a0">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/flag.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button contentDisplay="TOP" layoutX="10.0" layoutY="142.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="74.0" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Mentors" textFill="#a868a0">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/group.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </VBox>
+            <AnchorPane layoutX="97.0" layoutY="55.0" prefHeight="677.0" prefWidth="1272.0" style="-fx-background-color: #131022; -fx-background-radius: 10;" stylesheets="@../css/fullpackstyling.css">
+               <children>
+                  <Label layoutX="39.0" layoutY="-2.0" text="Gerer les demandes " textFill="WHITE">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="274.0" layoutY="-2.0" text="D'inscriptions" textFill="#fff600">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+                  <Pane layoutX="48.0" layoutY="307.0" prefHeight="49.0" prefWidth="198.0" style="-fx-background-radius: 10;">
+                     <children>
+                        <ImageView fitHeight="38.0" fitWidth="34.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/chart.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="66.0" layoutY="14.0" text="Statistique " textFill="WHITE">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <TableView fx:id="DemandesInscris" layoutX="35.0" layoutY="53.0" prefHeight="200.0" prefWidth="757.0">
+                     <columns>
+                        <TableColumn fx:id="idDemande" prefWidth="75.0" text="IdDemande" />
+                        <TableColumn fx:id="nomP" prefWidth="75.0" text="Nom Parent" />
+                        <TableColumn fx:id="prenomP" prefWidth="75.0" text="Prenom Parent" />
+                        <TableColumn fx:id="numP" prefWidth="75.0" text="Num Parent" />
+                        <TableColumn fx:id="adres" prefWidth="75.0" text="Address" />
+                        <TableColumn fx:id="mail" prefWidth="75.0" text="Email" />
+                        <TableColumn fx:id="nomE" prefWidth="75.0" text="Nom Enfant " />
+                        <TableColumn fx:id="prenomE" prefWidth="75.0" text="prenom Enfant " />
+                        <TableColumn fx:id="ageE" prefWidth="75.0" text="Age Enfant" />
+                        <TableColumn fx:id="etatTaraitement" prefWidth="81.0" text="Etat" />
+                     </columns>
+                  </TableView>
+                  <Button fx:id="Accept" layoutX="300.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleAcceptButtonAction" prefHeight="25.0" prefWidth="74.0" style="-fx-background-radius: 10;" styleClass="linear-grad" stylesheets="@../css/fullpackstyling.css" text="Accepter" />
+                  <Button fx:id="refuser" layoutX="509.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleRefuserButtonAction" prefHeight="25.0" prefWidth="74.0" style="-fx-background-radius: 10;" styleClass="linear-grad" stylesheets="@../css/fullpackstyling.css" text="Refuser" />
+                  <BarChart fx:id="stat" layoutX="10.0" layoutY="320.0" prefHeight="318.0" prefWidth="599.0" title="Demande Incription">
+                     <xAxis>
+                        <CategoryAxis side="BOTTOM" />
+                     </xAxis>
+                     <yAxis>
+                        <NumberAxis side="LEFT" />
+                     </yAxis>
+                  </BarChart>
+                  <TableView fx:id="tabParent" layoutX="918.0" layoutY="53.0" prefHeight="200.0" prefWidth="340.0">
+                     <columns>
+                        <TableColumn fx:id="nomP1" prefWidth="75.0" text="Nom Parent" />
+                        <TableColumn fx:id="prenomP1" prefWidth="94.0" text="Prenom Parent" />
+                        <TableColumn fx:id="numP1" prefWidth="112.0" text="Num Parent" />
+                        <TableColumn fx:id="adres1" prefWidth="101.0" text="Address" />
+                        <TableColumn fx:id="mail1" prefWidth="163.0" text="Email" />
+                        <TableColumn fx:id="IdParent" prefWidth="45.0" text="ID" />
+                     </columns>
+                  </TableView>
+                  <TableView fx:id="tabEnfant" editable="true" layoutX="756.0" layoutY="346.0" prefHeight="200.0" prefWidth="475.0">
+                     <columns>
+                        <TableColumn fx:id="idp" text="Id parent" />
+                        <TableColumn fx:id="nomE1" prefWidth="107.0" text="nom Enfant " />
+                        <TableColumn fx:id="prenomE1" prefWidth="109.0" text="prenom Enfant " />
+                        <TableColumn fx:id="ageE1" prefWidth="71.0" text="Age" />
+                        <TableColumn fx:id="GR" prefWidth="66.0" text="Groupe" />
+                        <TableColumn fx:id="IdEnfant" prefWidth="47.0" text="ID" />
+                     </columns>
+                  </TableView>
+                  <Label layoutX="756.0" layoutY="306.0" text="Liste" textFill="WHITE">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="818.0" layoutY="306.0" text="Des Enfants" textFill="#fff600">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="928.0" layoutY="-2.0" text="Liste " textFill="WHITE">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="999.0" layoutY="-2.0" text="Des Parent" textFill="#fff600">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="Supprimer" layoutX="1007.0" layoutY="264.0" mnemonicParsing="false" onAction="#Supprimer" prefHeight="25.0" prefWidth="124.0" style="-fx-background-radius: 10;" styleClass="linear-grad" stylesheets="@../css/fullpackstyling.css" text="Supprimer Parent" />
+                  <Button fx:id="supprimerE" layoutX="1007.0" layoutY="555.0" mnemonicParsing="false" onAction="#SupprimerEnfant" prefHeight="25.0" prefWidth="124.0" style="-fx-background-radius: 10;" styleClass="linear-grad" stylesheets="@../css/fullpackstyling.css" text="Supprimer Enfant" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
