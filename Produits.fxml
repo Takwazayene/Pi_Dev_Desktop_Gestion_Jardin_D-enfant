@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ProduitsController">
+   <children>
+      <AnchorPane prefHeight="616.0" prefWidth="1101.0" style="-fx-background-color: #030307; -fx-background-radius: 15;">
+         <children>
+            <Pane layoutX="590.0" layoutY="-1.0" prefHeight="93.0" prefWidth="405.0" style="-fx-background-radius: 20 20 0 0;" styleClass="linear-grad" stylesheets="@../css/fullpackstyling.css">
+               <children>
+                  <ImageView fitHeight="38.0" fitWidth="34.0" layoutX="335.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/ic_usr.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="109.0" layoutY="20.0" text="Controllez Vos Produits" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <VBox prefHeight="544.0" prefWidth="74.0" style="-fx-background-color: #131022; -fx-background-radius: 15 0 0 15;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Pane prefHeight="79.0" prefWidth="74.0" style="-fx-background-radius: 15 0 15 15;" />
+                  <Button fx:id="goToCateg" contentDisplay="TOP" mnemonicParsing="false" onAction="#goToCategAction" prefHeight="66.0" prefWidth="74.0" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Catégories" textFill="#a868a0">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/cat.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button contentDisplay="TOP" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="74.0" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Prouits" textFill="#a868a0">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/time.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="goToCom" contentDisplay="TOP" layoutX="10.0" layoutY="76.0" mnemonicParsing="false" onAction="#goToComAction" prefHeight="66.0" prefWidth="74.0" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Commandes" textFill="#a868a0">
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/flag.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </VBox>
+            <AnchorPane layoutX="81.0" layoutY="70.0" prefHeight="531.0" prefWidth="1027.0" style="-fx-background-color: #131022; -fx-background-radius: 10;" stylesheets="@../css/fullpackstyling.css">
+               <children>
+                  <Label graphicTextGap="10.0" layoutX="32.0" layoutY="7.0" text="Ajouter Un Produit: ">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="0.09999999999999998" endY="0.6952380952380952" startX="0.5" startY="0.35714285714285715">
+                           <stops>
+                              <Stop color="#ff33c9" />
+                              <Stop color="#05ff7e" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Label>
+                  <Line endX="100.0" endY="-30.0" layoutX="255.0" layoutY="43.0" startX="100.0" startY="476.0" stroke="#b9b1b1" strokeDashOffset="2.0" />
+                  <BorderPane layoutX="569.0" layoutY="404.0" prefHeight="66.0" prefWidth="270.0" />
+                  <TextField fx:id="libelle" layoutX="111.0" layoutY="42.0" prefHeight="25.0" prefWidth="200.0" styleClass="text" stylesheets="@../css/fullpackstyling.css" />
+                  <Label graphicTextGap="10.0" layoutX="18.0" layoutY="39.0" text="Libellé : ">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#ff33c9" />
+                              <Stop color="WHITE" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Label>
+                  <Button fx:id="ajouter" layoutX="179.0" layoutY="478.0" mnemonicParsing="false" onAction="#ajouterAction" prefHeight="25.0" prefWidth="145.0" styleClass="button4" stylesheets="@../css/fullpackstyling.css" text="Enregistrer" textFill="WHITE" />
+                  <TableView fx:id="affichage" editable="true" layoutX="371.0" layoutY="19.0" prefHeight="459.0" prefWidth="620.0">
+                    <columns>
+                      <TableColumn fx:id="affid" prefWidth="75.0" text="ID : " />
+                      <TableColumn fx:id="afflibelle" prefWidth="75.0" text="Libellé" />
+                        <TableColumn fx:id="affcategorie" prefWidth="75.0" text="Catégorie" />
+                        <TableColumn fx:id="affprix" prefWidth="75.0" text="P/U" />
+                        <TableColumn fx:id="affquantite" prefWidth="101.0" text="Quantité Disponbile" />
+                        <TableColumn fx:id="affdesc" prefWidth="172.0" text="Description" />
+                    </columns>
+                  </TableView>
+                  <TextField fx:id="prix" layoutX="113.0" layoutY="137.0" prefHeight="25.0" prefWidth="200.0" styleClass="label" stylesheets="@../css/fullpackstyling.css" />
+                  <Label graphicTextGap="10.0" layoutX="14.0" layoutY="94.0" text="Quantité :">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#ff33c9" />
+                              <Stop color="WHITE" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Label>
+                  <Label graphicTextGap="10.0" layoutX="18.0" layoutY="139.0" text="Prix : ">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#ff33c9" />
+                              <Stop color="WHITE" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Label>
+                  <Label graphicTextGap="10.0" layoutX="8.0" layoutY="266.0" text="Description :">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#ff33c9" />
+                              <Stop color="WHITE" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Label>
+                  <TextArea fx:id="desc" layoutX="115.0" layoutY="244.0" prefHeight="125.0" prefWidth="200.0" />
+                  <ChoiceBox fx:id="quantite" layoutX="112.0" layoutY="91.0" prefHeight="25.0" prefWidth="200.0" styleClass="combo-box" stylesheets="@../css/fullpackstyling.css" />
+                  <Label graphicTextGap="10.0" layoutX="15.0" layoutY="186.0" text="Catégorie :">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#ff33c9" />
+                              <Stop color="WHITE" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Label>
+                  <ChoiceBox fx:id="categorie" layoutX="114.0" layoutY="188.0" prefHeight="25.0" prefWidth="200.0" styleClass="combo-box" stylesheets="@../css/fullpackstyling.css" />
+                  <Button fx:id="img" layoutX="115.0" layoutY="401.0" mnemonicParsing="false" onAction="#uploadimg" prefHeight="25.0" prefWidth="145.0" styleClass="button4" stylesheets="@../css/fullpackstyling.css" text="Upload" textFill="WHITE" />
+                  <Label graphicTextGap="10.0" layoutX="13.0" layoutY="400.0" text="Image :">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#ff33c9" />
+                              <Stop color="WHITE" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Label>
+                  <Button fx:id="supprimer" layoutX="704.0" layoutY="492.0" mnemonicParsing="false" onAction="#supprimerAction" prefHeight="25.0" prefWidth="145.0" styleClass="button4" stylesheets="@../css/fullpackstyling.css" text="Supprimer" textFill="WHITE" />
+                  <Label fx:id="labforpath" layoutX="124.0" layoutY="437.0" prefHeight="17.0" prefWidth="145.0" textFill="RED" />
+                  <Label fx:id="verifprix" layoutX="124.0" layoutY="163.0" prefHeight="17.0" prefWidth="185.0" text="Label" textFill="RED" />
+                  <Label fx:id="veriflibelle" layoutX="125.0" layoutY="69.0" prefHeight="17.0" prefWidth="185.0" text="Label" textFill="RED" />
+                  <Label fx:id="verifdesc" layoutX="120.0" layoutY="374.0" prefHeight="17.0" prefWidth="185.0" text="Label" textFill="RED" />
+                  <Button fx:id="modifier" layoutX="540.0" layoutY="491.0" mnemonicParsing="false" onAction="#modifierAction" prefHeight="25.0" prefWidth="145.0" styleClass="button4" stylesheets="@../css/fullpackstyling.css" text="Modifier" textFill="WHITE" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

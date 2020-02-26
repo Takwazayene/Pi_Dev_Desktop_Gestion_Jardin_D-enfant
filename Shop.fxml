@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="530.0" prefWidth="830.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ShoppingController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="530.0" stroke="#cc0000" strokeType="INSIDE" strokeWidth="10.0" width="830.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cc0000" height="500.0" layoutX="15.0" layoutY="15.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="800.0" />
+      <SplitPane dividerPositions="0.34575835475578404" layoutX="25.0" layoutY="25.0" prefHeight="480.0" prefWidth="780.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="470.0" prefWidth="266.0">
+               <children>
+                  <TableView fx:id="tableprod" fixedCellSize="-3.0" prefHeight="528.0" prefWidth="266.0" style="-fx-background-color: FFFFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                      <TableColumn fx:id="idCol" prefWidth="35.0" text="ID :" />
+                      <TableColumn fx:id="quantiteCol" prefWidth="111.0" text="Quantité Disponible" />
+                        <TableColumn fx:id="prodCol" prefWidth="119.0" text="Produit" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="499.0" prefWidth="463.0" style="-fx-background-color: #0039a6;">
+               <children>
+                  <Label layoutX="33.0" prefHeight="60.0" prefWidth="221.0" text="Description" textAlignment="JUSTIFY" textFill="WHITE">
+                     <font>
+                        <Font size="38.0" />
+                     </font>
+                  </Label>
+                  <GridPane layoutX="32.0" layoutY="73.0" prefHeight="333.0" prefWidth="402.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Image" textFill="WHITE">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <Label text="Produit" textFill="WHITE" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="26.0" prefWidth="161.0" text="Quantité Disponible" textFill="WHITE" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <Label text="Prix" textFill="WHITE" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <Label text="Description" textFill="WHITE" GridPane.rowIndex="4">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="imglabel" textFill="WHITE" GridPane.columnIndex="1">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="prodlabel" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="quantitelabel" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="prixlabel" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="descLabel" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </GridPane>
+                  <Button fx:id="plusinfo" layoutX="15.0" layoutY="442.0" mnemonicParsing="false" onAction="#infoProduitAction" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: cc0000;" text="Plus D'informations" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
+                  <Button fx:id="viewButton" layoutX="272.0" layoutY="15.0" mnemonicParsing="false" onAction="#ShoppingCartButton" style="-fx-background-color: cc0000;" text="Voir Panier" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
+                  <Button fx:id="addButton" layoutX="369.0" layoutY="15.0" mnemonicParsing="false" onAction="#addToCartButton" prefHeight="26.0" prefWidth="112.0" style="-fx-background-color: cc0000;" text="Ajouter Au Panier" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
+                  <JFXComboBox fx:id="quantite" layoutX="164.0" layoutY="48.0" />
+                  <Label layoutX="39.0" layoutY="51.0" prefHeight="17.0" prefWidth="112.0" text="Quantité : " textFill="WHITE">
+                     <font>
+                        <Font name="Courier New" size="15.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="commencerShopping" layoutX="15.0" layoutY="404.0" mnemonicParsing="false" onAction="#createCommande" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: cc0000;" text="Commencer le shopping" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="descread" layoutX="272.0" layoutY="404.0" mnemonicParsing="false" onAction="#LireDescription" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: cc0000;" text="Lire la description" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="descTranslate" layoutX="272.0" layoutY="442.0" mnemonicParsing="false" onAction="#TranslaterDescription" prefHeight="25.0" prefWidth="205.0" style="-fx-background-color: cc0000;" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
