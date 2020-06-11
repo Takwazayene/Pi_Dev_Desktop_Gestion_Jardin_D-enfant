@@ -3,94 +3,108 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pidev.Entite;
-
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
- 
+package pidev.Test.Demande;
+import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.List;
-import com.itextpdf.text.ListItem;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfWriter;
-import java.util.ArrayList;
-import pidev.Entite.Tab_Demande;
-import pidev.DataBase.DataBase;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
+import java.util.Date;
+import java.util.List;
+import pidev.Entite.Tab_Reclamation;
 /**
  *
- * @author maiss
+ * @author Hp
  */
-public class Pdf {
-        private Connection con;
-        private Statement ste;
-    public Pdf()  {
-        con = DataBase.getInstance().getConnection();
-          
-    
-}
-    public void add(String file,String N,String N1,String N2,String N3,String N4,String N5,String N6,String N7) throws FileNotFoundException, SQLException, DocumentException{
-        
-        /* Create Connection objects */
-//                con = DataBase.getInstance().getConnection();
-                Document my_pdf_report = new Document();
-                PdfWriter.getInstance(my_pdf_report, new FileOutputStream(file));
-                my_pdf_report.open();            
-                //we have four columns in our table
-                PdfPTable my_report_table = new PdfPTable(2);
-                //create a cell object
-                PdfPCell table_cell;
-                                
-                              
-                                table_cell=new PdfPCell(new Phrase("Nom"));
-                                my_report_table.addCell(table_cell);
-                                table_cell=new PdfPCell(new Phrase(N));
-                                my_report_table.addCell(table_cell);
-                                table_cell=new PdfPCell(new Phrase("Prenom"));
-                                my_report_table.addCell(table_cell);
-                                table_cell=new PdfPCell(new Phrase(N1));
-                                my_report_table.addCell(table_cell);
-                                table_cell=new PdfPCell(new Phrase("Cin"));
-                                my_report_table.addCell(table_cell);
-                                table_cell=new PdfPCell(new Phrase(N2));
-                                my_report_table.addCell(table_cell);
-                                table_cell=new PdfPCell(new Phrase("Num tel"));
-                                my_report_table.addCell(table_cell);
-                                table_cell=new PdfPCell(new Phrase(N3));
-                                my_report_table.addCell(table_cell);
-                                table_cell=new PdfPCell(new Phrase("CV"));
-                                my_report_table.addCell(table_cell);
-                                table_cell=new PdfPCell(new Phrase(N4));
-                                my_report_table.addCell(table_cell);
-                                table_cell=new PdfPCell(new Phrase("Date Naissance"));
-                                my_report_table.addCell(table_cell);
-                                table_cell=new PdfPCell(new Phrase(N5));
-                                my_report_table.addCell(table_cell);
-                                table_cell=new PdfPCell(new Phrase("Etude"));
-                                my_report_table.addCell(table_cell);
-                                table_cell=new PdfPCell(new Phrase(N6));
-                                my_report_table.addCell(table_cell);
-                                table_cell=new PdfPCell(new Phrase("Poste"));
-                                my_report_table.addCell(table_cell);
-                                table_cell=new PdfPCell(new Phrase(N7));
-                                my_report_table.addCell(table_cell);
-                               
-                                
-                /* Attach report table to PDF */
-                my_pdf_report.add(my_report_table);                       
-                my_pdf_report.close();
-                
-               /* Close all DB related objects */
+public class pdf {
+   
 
-        
+
+private static String FILE = "output.pdf";
+
+
+ private static Font basicFont = new Font(Font.FontFamily.TIMES_ROMAN, 26,
+            Font.BOLD);
+
+    private static Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 18,
+            Font.BOLD);
+    private static Font redFont = new Font(Font.FontFamily.TIMES_ROMAN, 12,
+            Font.NORMAL, BaseColor.RED);
+    private static Font subFont = new Font(Font.FontFamily.TIMES_ROMAN, 16,
+            Font.BOLD);
+    private static Font smallBold = new Font(Font.FontFamily.TIMES_ROMAN, 12,
+            Font.BOLD);
+
+    static void addMetaData(Document document) {
+        document.addTitle("Note ");
+        document.addSubject("Note");
+        document.addKeywords("Note, PDF");
+        document.addAuthor("3almni");
+        document.addCreator("3almni");
     }
-     
+
+
+
+   static void addTitlePage(Document document, List<Tab_Reclamation> list)
+            throws DocumentException {
+        Paragraph preface = new Paragraph();
+        // We add one empty line
+        addEmptyLine(preface, 1);
+        // Lets write a big header
+        Paragraph title = new Paragraph("3almni Platforme", basicFont);
+        title.setAlignment(Element.ALIGN_CENTER);
+        preface.add(title);
+        addEmptyLine(preface, 1);
+        preface.add(new Paragraph("List Notes", catFont));
+
+        Paragraph prof = new Paragraph("Prof : Bessem Bousselmi", smallBold);
+        prof.setAlignment(Element.ALIGN_RIGHT);
+        preface.add(prof);
+
+        addEmptyLine(preface, 1);
+        preface.add(new Paragraph("Date :" + new Date(), redFont));
+
+        Paragraph Info = new Paragraph("Programmation Stm32", smallBold);
+        Info.setAlignment(Element.ALIGN_CENTER);
+        preface.add(Info);
+
+        addEmptyLine(preface, 3);
+
+        PdfPTable table = new PdfPTable(3);
+
+        PdfPCell c1 = new PdfPCell(new Phrase("Etudent"));
+        c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+        table.addCell(c1);
+
+        c1 = new PdfPCell(new Phrase("Note"));
+        c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+        table.addCell(c1);
+
+        c1 = new PdfPCell(new Phrase("Remarque"));
+        c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+        table.addCell(c1);
+        table.setHeaderRows(1);
+
+        list.stream().forEach((N) -> {
+            System.out.println(N.toString());
+            table.addCell(String.valueOf(N.getId()));
+            table.addCell(String.valueOf(N.getNom()));
+            table.addCell(N.getCin());
+        });
+
+        preface.add(table);
+
+        document.add(preface);
+
+    }
+
+    private static void addEmptyLine(Paragraph paragraph, int number) {
+        for (int i = 0; i < number; i++) {
+            paragraph.add(new Paragraph(" "));
+        }
+    } 
 }
